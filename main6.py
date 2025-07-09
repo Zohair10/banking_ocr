@@ -63,21 +63,30 @@ def extract_text_from_image(base64_image):
 Extract ALL visible information from this form image and return it as a valid JSON object with key-value pairs.
 If you find any of the following fields, use these exact key names in your JSON:
 - "Date"
+- "New Outlet"
+- "Chain Outlet"
 - "Merchant Name Commercial"
 - "Merchant Name legal"
+- "Established Since"
 - "Business Address Commercial"
 - "City"
-- "Telephone"
-- "Anual Sales Volume"
+- "Telephone / Cell"
+- "Contact Person Name"
+- "Business Address Legal"
+- "Type of Business/Type of Merchandise/"Service Sold"
+- "Annual Sales Volume"
 - "Average Transaction size"
+- "Expected Volume"
 - "Legal Structure"
 - "First Name"
 - "Last Name"
+- "NIC (Old)"
 - "NIC New"
-- "Identity Number"
+- "Residence Address"
 - "Payment Mode"
 - "Banker Name and Branch"
 - "Account"
+- "Merchant Cheaque Beneficiary Name"
 If a field is not present, set its value to null.
 </task>
 <instructions>
@@ -134,21 +143,30 @@ def match_and_autofill_fields(extracted_json):
     """
     required_keys = [
         "Date",
+        "New Outlet",
+        "Chain Outlet",
         "Merchant Name Commercial",
-        "Merchant Name legal", 
+        "Merchant Name legal",
+        "Established Since",
         "Business Address Commercial",
         "City",
-        "Telephone",
-        "Anual Sales Volume",
+        "Telephone / Cell",
+        "Contact Person Name",
+        "Business Address Legal",
+        "Type of Business/Type of Merchandise/Service Sold",
+        "Annual Sales Volume",
         "Average Transaction size",
+        "Expected Volume",
         "Legal Structure",
         "First Name",
         "Last Name",
+        "NIC (Old)",
         "NIC New",
-        "Identity Number",
+        "Residence Address"
         "Payment Mode",
         "Banker Name and Branch",
-        "Account"
+        "Account",
+        "Merchant Cheaque Beneficiary Name"
     ]
     autofill = {k: None for k in required_keys}
     if not extracted_json:
@@ -211,21 +229,30 @@ def main():
     st.markdown("Upload an **image, PDF, or DOCX** file containing handwritten text to extract structured data using AI.")
     required_keys = [
         "Date",
+        "New Outlet",
+        "Chain Outlet",
         "Merchant Name Commercial",
         "Merchant Name legal",
+        "Established Since",
         "Business Address Commercial",
         "City",
-        "Telephone",
-        "Anual Sales Volume",
+        "Telephone / Cell",
+        "Contact Person Name",
+        "Business Address Legal",
+        "Type of Business/Type of Merchandise/Service Sold",
+        "Annual Sales Volume",
         "Average Transaction size",
+        "Expected Volume",
         "Legal Structure",
         "First Name",
         "Last Name",
+        "NIC (Old)",
         "NIC New",
-        "Identity Number",
+        "Residence Address",
         "Payment Mode",
         "Banker Name and Branch",
-        "Account"
+        "Account",
+        "Merchant Cheaque Beneficiary Name"
     ]
     # Initialize session state for extracted data
     if 'extracted_autofill' not in st.session_state:
